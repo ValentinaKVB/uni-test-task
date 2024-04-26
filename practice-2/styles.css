@@ -27,3 +27,7 @@ td {
   padding: 20px;
   border: 1px solid #444;
 }
+
+tbody th {
+  vertical-align: top;
+}
