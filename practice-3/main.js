@@ -3,26 +3,21 @@ import { getData, createTable } from "./table.js";
 const arr = await getData();
 // console.log(arr);
 
-const body = document.querySelector("body");
 const userIdColumn = document.querySelector("thead th:nth-child(1)");
 const postIdColumn = document.querySelector("thead th:nth-child(2)");
 const postTitleColumn = document.querySelector("thead th:nth-child(3)");
 const postBodyColumn = document.querySelector("thead th:nth-child(4)");
 const tbody = document.querySelector("tbody");
 const searchInput = document.querySelector("input");
-const resetButton = document.querySelector(".clear-filter");
 let sorted = false;
 let currentFilter = arr;
-
 
 createTable(arr);
 
 //Сортировка
 userIdColumn.addEventListener("click", () => {
   let sortedUsersAscending = currentFilter.toSorted((a, b) => a.userId - b.userId);
-  // let sortedUsersDescending = currentFilter.toSorted((a, b) => b.userId - a.userId);
   let sortedUsersDescending = sortedUsersAscending.toReversed();
-
 
   while (tbody.firstChild) {
     tbody.firstChild.remove();
@@ -31,21 +26,18 @@ userIdColumn.addEventListener("click", () => {
   if (!sorted) {
     createTable(sortedUsersDescending);
     sorted = true;
-    currentSorting = sortedUsersDescending;
+    currentFilter = sortedUsersDescending;
   } else {
     createTable(sortedUsersAscending);
     sorted = false;
-    currentSorting = sortedUsersAscending;
-
+    currentFilter = sortedUsersAscending;
   }
 
 })
 
 postIdColumn.addEventListener("click", () => {
   let sortedPostIdAscending = currentFilter.toSorted((a, b) => a.id - b.id);
-  // let sortedPostIdDescending = currentFilter.toSorted((a, b) => b.id - a.id);
   let sortedPostIdDescending = sortedPostIdAscending.toReversed();
-
 
   while (tbody.firstChild) {
     tbody.firstChild.remove();
@@ -54,22 +46,19 @@ postIdColumn.addEventListener("click", () => {
   if (!sorted) {
     createTable(sortedPostIdDescending);
     sorted = true;
-    currentSorting = sortedPostIdDescending;
+    currentFilter = sortedPostIdDescending;
 
   } else {
     createTable(sortedPostIdAscending);
     sorted = false;
-    currentSorting = sortedPostIdAscending;
-
+    currentFilter = sortedPostIdAscending;
   }
 
 })
 
 postTitleColumn.addEventListener("click", () => {
   let sortedPostTitleAscending = currentFilter.toSorted((a, b) => a.title.localeCompare(b.title));
-  // let sortedPostTitleDescending = currentFilter.toSorted((a, b) => b.title.localeCompare(a.title));
   let sortedPostTitleDescending = sortedPostTitleAscending.toReversed();
-
 
   while (tbody.firstChild) {
     tbody.firstChild.remove();
@@ -90,9 +79,7 @@ postTitleColumn.addEventListener("click", () => {
 
 postBodyColumn.addEventListener("click", () => {
   let sortedPostBodyAscending = currentFilter.toSorted((a, b) => a.body.localeCompare(b.body));
-  // let sortedPostBodyDescending = currentFilter.toSorted((a, b) => b.body.localeCompare(a.body));
   let sortedPostBodyDescending = sortedPostBodyAscending.toReversed();
-
 
   while (tbody.firstChild) {
     tbody.firstChild.remove();
@@ -101,43 +88,35 @@ postBodyColumn.addEventListener("click", () => {
   if (!sorted) {
     createTable(sortedPostBodyDescending);
     sorted = true;
-    currentSorting = sortedPostBodyDescending;
+    currentFilter = sortedPostBodyDescending;
 
   } else {
     createTable(sortedPostBodyAscending);
     sorted = false;
-    currentSorting = sortedPostBodyAscending;
-
+    currentFilter = sortedPostBodyAscending;
   }
 
 })
 
 searchInput.addEventListener("keyup", () => {
-  currentFilter = arr;
+
+  while (tbody.firstChild) {
+    tbody.firstChild.remove();
+  }
 
   if (searchInput.value.length > 2) {
-    console.log("filtered");
+    currentFilter = arr;
     let filter = searchInput.value.trim().toLowerCase();
     console.log(filter);
 
     let filteredArray = currentFilter.filter((el) => {
       return el.title.toLowerCase().includes(filter) ||
-        el.body.toLowerCase().includes(filter);
+             el.body.toLowerCase().includes(filter);
     });
-
-    while (tbody.firstChild) {
-      tbody.firstChild.remove();
-    }
 
     createTable(filteredArray);
     currentFilter = filteredArray;
+  } else {
+    createTable(arr);
   }
-})
-
-resetButton.addEventListener("click", () => {
-  while (tbody.firstChild) {
-    tbody.firstChild.remove();
-  }
-  createTable(arr);
-  currentFilter = arr;
 })

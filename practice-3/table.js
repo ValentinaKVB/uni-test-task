@@ -18,12 +18,7 @@ async function getData() {
 }
 
 //В этом задании общую часть таблицы для удобства создала в index.html
- async function createTable(array) {
-  // const array = await getData();
-
-  // const body = document.querySelector("body");
-  // const table = document.querySelector("table");
-  // const thead = document.querySelector("thead");
+async function createTable(array) {
   const tbody = document.querySelector("tbody");
   const users = tbody.getElementsByTagName("th");
 
@@ -35,7 +30,6 @@ async function getData() {
 
     const row = document.createElement("tr");
     tbody.appendChild(row);
-
 
     if (i === 0 ||
       (i > 0 && userId !== array[i - 1].userId)) {
