@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button type="button">Модальное окно</button>
+  <section class="modal">
+    <div class="modal-content">
+      <button type="button" class="close-btn">⨉</button>
+      <h2>Стать партнёром проекта</h2>
+      <form action="">
+
+        
+        <label for="logo">✱ Логотип (jpeg, png)</label>
+        <div class="discard-logo"></div>
+        <input type="file" name="logo" id="logo" required>
+
+        <label for="company-name">✱ Название организации</label>
+        <input type="text" name="company-name" id="company-name" required>
+
+        <label for="phone-number">✱ Телефон</label>
+        <input type="tel" name="phone-number" id="phone-number" required>
+
+        <label for="email-address">✱ E-mail</label>
+        <input type="email" name="email-address" id="email-address" required>
+
+        <label for="activity-field">✱ Направление</label>
+        <select name="activity-field" id="activity-field" required>
+          <option value="экология">Экология</option>
+        </select>
+
+        <input type="text" name="website" id="website">
+        <input type="text" name="vk" id="social-vk">
+        <input type="text" name="odnoklassniki" id="odnoklassniki">
+        <input type="text" name="facebook" id="facebook">
+        <input type="text" name="instagram" id="instagram">
+        <input type="text" name="youtube" id="youtube">
+
+        <label for="ceo">Руководитель</label>
+        <input type="text" name="ceo" id="ceo">
+
+        <button class="submit">Стать партнёром проекта</button>
+        <a href="">Отмена</a>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
