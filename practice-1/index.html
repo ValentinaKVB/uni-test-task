@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Форма</title>
   <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <button type="button">Модальное окно</button>
-  <section class="modal">
+
+<body class="pt-sans-regular">
+  <button class="open-btn" type="button">Модальное окно</button>
+  <section class="modal hidden">
     <div class="modal-content">
-      <button type="button" class="close-btn">⨉</button>
-      <h2>Стать партнёром проекта</h2>
+      <div class="close-icon"></div>
+
       <form action="">
+        <h2 class="montserrat-bold">Стать партнёром проекта</h2>
 
-        
-        <label for="logo">✱ Логотип (jpeg, png)</label>
-        <div class="discard-logo"></div>
-        <input type="file" name="logo" id="logo" required>
+        <div class="input-group">
+          <label for="company-name">✱ Название организации</label>
+          <input type="text" name="company-name" id="company-name" required value="АВЦ">
+        </div>
+        <div class="input-group">
+          <label for="phone-number">✱ Телефон</label>
+          <input type="tel" name="phone-number" id="phone-number" required value="+7 933 848-34-33">
+        </div>
+        <div class="input-group">
+          <label for="email-address">✱ E-mail</label>
+          <input type="email" name="email-address" id="email-address" required value="avc@gmail.com">
+        </div>
+        <div class="input-group">
+          <label for="logo">✱ Логотип (jpeg, png)</label>
+          <input type="file" name="logo" id="logo" accept=".png, .jpeg, .jpg" required>
+          <div class="file">
+            <div class="close-icon"></div>
+            <img src="images/file-icon.svg" alt="">
+            <a href="">Выберите<br>
+              файл</a>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="activity-field">✱ Направление</label>
+          <select name="activity-field" id="activity-field" required>
+            <option value="экология">Экология</option>
+            <option value="ит">ИТ</option>
+            <option value="строительство">Строительство</option>
+          </select>
+        </div>
 
-        <label for="company-name">✱ Название организации</label>
-        <input type="text" name="company-name" id="company-name" required>
+        <input type="text" name="website" id="website" value="avc.ru">
+        <input type="text" name="vk" id="social-vk" value="vk.com/shans">
+        <input type="text" name="odnoklassniki" id="odnoklassniki" value="ok.com/shans">
+        <input type="text" name="facebook" id="facebook" value="facebook.com/shans">
+        <input type="text" name="instagram" id="instagram" value="instagram.com/shans">
+        <input type="text" name="youtube" id="youtube" value="youtube.com/shans">
 
-        <label for="phone-number">✱ Телефон</label>
-        <input type="tel" name="phone-number" id="phone-number" required>
-
-        <label for="email-address">✱ E-mail</label>
-        <input type="email" name="email-address" id="email-address" required>
-
-        <label for="activity-field">✱ Направление</label>
-        <select name="activity-field" id="activity-field" required>
-          <option value="экология">Экология</option>
-        </select>
-
-        <input type="text" name="website" id="website">
-        <input type="text" name="vk" id="social-vk">
-        <input type="text" name="odnoklassniki" id="odnoklassniki">
-        <input type="text" name="facebook" id="facebook">
-        <input type="text" name="instagram" id="instagram">
-        <input type="text" name="youtube" id="youtube">
-
-        <label for="ceo">Руководитель</label>
-        <input type="text" name="ceo" id="ceo">
+        <div class="input-group">
+          <label for="ceo">Руководитель</label>
+          <input type="text" name="ceo" id="ceo" value="Александров Иван Васильевич">
+        </div>
 
         <button class="submit">Стать партнёром проекта</button>
-        <a href="">Отмена</a>
+        <a class="cancel" href="">Отмена</a>
       </form>
     </div>
   </section>
 </body>
+
 </html>
