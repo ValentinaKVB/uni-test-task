@@ -17,7 +17,7 @@ async function getData() {
   }
 }
 
-//В этом задании общую часть таблицы для удобства создала в index.html
+//В этом задании общую часть таблицы для удобства создала в html-файле
 async function createTable(array) {
   const tbody = document.querySelector("tbody");
   const users = tbody.getElementsByTagName("th");
